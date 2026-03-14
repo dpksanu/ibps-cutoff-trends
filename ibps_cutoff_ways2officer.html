@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBPS SO IT Cut-off Trends | Ways to Officer — Dpksanu</title>
+<link rel="icon" type="image/png" href="logo.png">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:       #0B1730;
+  --navy2:      #112047;
+  --navy3:      #1A3163;
+  --gold:       #F5A623;
+  --gold-dark:  #C47F0A;
+  --gold-light: #FEF3D7;
+  --blue:       #2563EB;
+  --blue-light: #DBEAFE;
+  --teal:       #0D9488;
+  --teal-light: #CCFBF1;
+  --red:        #DC2626;
+  --red-light:  #FEE2E2;
+  --green:      #16A34A;
+  --green-light:#DCFCE7;
+  --purple:     #7C3AED;
+  --bg:         #F0F4FF;
+  --surface:    #FFFFFF;
+  --border:     rgba(11,23,48,0.09);
+  --text:       #0B1730;
+  --muted:      #64748B;
+  --radius:     10px;
+  --radius-lg:  16px;
+  --shadow:     0 1px 4px rgba(11,23,48,0.08), 0 1px 2px rgba(11,23,48,0.04);
+  --shadow-md:  0 4px 16px rgba(11,23,48,0.10);
+}
+.logo-img{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(245,166,35,0.3);
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* ── TOP NAVBAR ── */
+.navbar {
+  background: var(--navy);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid var(--gold);
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.logo-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, #E8820A 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -.02em;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(245,166,35,0.3);
+}
+.brand-text { display: flex; flex-direction: column; gap: 0; }
+.brand-name { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: -.01em; line-height: 1.2; }
+.brand-sub  { font-size: 10px; color: rgba(255,255,255,.45); letter-spacing: .04em; font-weight: 500; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Sora', sans-serif;
+  text-decoration: none;
+  transition: all .15s ease;
+  cursor: pointer;
+  border: none;
+}
+.nav-btn-yt {
+  background: #FF0000;
+  color: #fff;
+}
+.nav-btn-yt:hover { background: #CC0000; transform: translateY(-1px); }
+.nav-btn-tg {
+  background: #229ED9;
+  color: #fff;
+}
+.nav-btn-tg:hover { background: #1A7FA8; transform: translateY(-1px); }
+.nav-btn-icon { font-size: 14px; }
+
+/* ── HERO STRIP ── */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 60%, #1e3a8a 100%);
+  padding: 2rem 2rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.hero-left h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -.02em;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.hero-left h1 span { color: var(--gold); }
+.hero-left p { font-size: 12px; color: rgba(255,255,255,.55); }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245,166,35,.18);
+  border: 1px solid rgba(245,166,35,.4);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  letter-spacing: .04em;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+.hero-stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.hero-stat { text-align: center; }
+.hero-stat-val { font-size: 22px; font-weight: 700; color: var(--gold); font-family: 'JetBrains Mono', monospace; line-height: 1; }
+.hero-stat-lbl { font-size: 10px; color: rgba(255,255,255,.45); margin-top: 3px; font-weight: 500; }
+
+/* ── MAIN CONTAINER ── */
+.container { max-width: 1100px; margin: 0 auto; padding: 1.75rem 1.5rem 3rem; }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: .75rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── TABS ── */
+.tabs { display: flex; gap: 6px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.tab {
+  padding: 8px 20px;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Sora', sans-serif;
+  cursor: pointer;
+  background: var(--surface);
+  color: var(--muted);
+  transition: all .15s ease;
+}
+.tab.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(11,23,48,0.25);
+}
+.tab:hover:not(.active) { background: #EEF2FF; color: var(--text); border-color: #c7d2fe; }
+
+/* ── METRICS ── */
+.metrics { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin-bottom: 1.5rem; }
+.metric {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px 14px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: transform .15s, box-shadow .15s;
+}
+.metric:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.metric-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.metric-label { font-size: 11px; color: var(--muted); margin-bottom: 8px; font-weight: 600; letter-spacing: .02em; }
+.metric-value { font-size: 28px; font-weight: 700; color: var(--text); font-family: 'JetBrains Mono', monospace; letter-spacing: -.03em; line-height: 1; }
+.metric-sub { font-size: 11px; margin-top: 6px; font-weight: 600; }
+.up { color: #B91C1C; } .down { color: #15803D; }
+
+/* ── INSIGHTS ── */
+.insight-bar { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin-bottom: 1.75rem; }
+.insight {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--blue);
+  box-shadow: var(--shadow);
+}
+.insight strong { color: var(--text); display: block; font-size: 12px; margin-bottom: 4px; font-weight: 700; }
+.insight p { font-size: 11px; color: var(--muted); line-height: 1.55; }
+
+/* ── CHARTS ── */
+.charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+.chart-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem 1rem;
+  box-shadow: var(--shadow);
+}
+.chart-card.full { grid-column: 1 / -1; }
+.chart-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.chart-sub { font-size: 11px; color: var(--muted); margin-bottom: .75rem; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 10px; }
+.legend span { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); font-weight: 500; }
+.legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+
+/* ── TABLES ── */
+.table-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.25rem;
+}
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+thead th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 10px;
+  color: rgba(255,255,255,.8);
+  background: var(--navy2);
+  white-space: nowrap;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+thead th:first-child { border-radius: 0; }
+tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text); white-space: nowrap; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: #F8FAFF; }
+td.num { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 500; }
+td.year-cell { font-weight: 700; font-size: 13px; }
+
+/* ── BADGES ── */
+.badge { display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 5px; font-size: 10.5px; font-weight: 700; gap: 3px; }
+.badge-blue   { background: var(--blue-light);  color: #1D4ED8; }
+.badge-amber  { background: var(--gold-light);   color: var(--gold-dark); }
+.badge-green  { background: var(--green-light);  color: #166534; }
+.badge-red    { background: var(--red-light);    color: #991B1B; }
+.badge-gray   { background: #F1F5F9; color: #475569; }
+.badge-teal   { background: var(--teal-light);   color: #0F766E; }
+
+/* ── CTA STRIP ── */
+.cta-strip {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 100%);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  border: 1.5px solid rgba(245,166,35,.25);
+  position: relative;
+  overflow: hidden;
+}
+.cta-strip::before {
+  content: '';
+  position: absolute;
+  right: -30px; top: -30px;
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  background: rgba(245,166,35,.06);
+}
+.cta-text h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.cta-text p  { font-size: 12px; color: rgba(255,255,255,.5); }
+.cta-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: 'Sora', sans-serif;
+  text-decoration: none;
+  transition: all .15s ease;
+  white-space: nowrap;
+}
+.cta-btn-yt {
+  background: #FF0000;
+  color: #fff;
+}
+.cta-btn-yt:hover { background: #CC0000; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,0,0,.4); }
+.cta-btn-tg {
+  background: #229ED9;
+  color: #fff;
+}
+.cta-btn-tg:hover { background: #1A7FA8; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(34,158,217,.4); }
+
+/* ── FOOTER ── */
+.footer {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.footer-left { display: flex; align-items: center; gap: 12px; }
+.footer-logo {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, #E8820A 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: var(--navy); flex-shrink: 0;
+}
+.footer-brand { font-size: 13px; font-weight: 700; color: var(--text); }
+.footer-tagline { font-size: 11px; color: var(--muted); }
+.footer-right { font-size: 11px; color: var(--muted); text-align: right; }
+.footer-right a { color: var(--blue); text-decoration: none; }
+.footer-right a:hover { text-decoration: underline; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .metrics { grid-template-columns: repeat(2, 1fr); }
+  .insight-bar { grid-template-columns: repeat(2, 1fr); }
+  .charts-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 14px; }
+  .hero-left h1 { font-size: 17px; }
+  .navbar { padding: 0 1rem; }
+  .container { padding: 1.25rem 1rem 2.5rem; }
+  .cta-strip { padding: 1.25rem 1.5rem; }
+  .footer { flex-direction: column; align-items: flex-start; }
+  .footer-right { text-align: left; }
+  .nav-btn span:not(.nav-btn-icon) { display: none; }
+}
+@media (max-width: 480px) {
+  .metrics { grid-template-columns: 1fr 1fr; }
+  .insight-bar { grid-template-columns: 1fr; }
+  .hero { padding: 1.5rem 1rem 1.25rem; }
+  .hero-stats { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <img src="logo.png" class="logo-img">
+
+    <div class="brand-text">
+      <span class="brand-name">Ways to Officer</span>
+      <span class="brand-sub">by Dpksanu</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a class="nav-btn nav-btn-yt" href="https://www.youtube.com/@waystoofficer" target="_blank">
+      <span class="nav-btn-icon">▶</span>
+      <span>YouTube</span>
+    </a>
+    <a class="nav-btn nav-btn-tg" href="https://t.me/way2officersguide" target="_blank">
+      <span class="nav-btn-icon">✈</span>
+      <span>Telegram</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Updated on 15 MARCH 2026
+      </div>
+      <h1>IBPS SO IT Officer<br><span>Cut-off Trends</span> 2019–2025</h1>
+      <p>Source: Official IBPS Score Cards · ibps.in · CRP-SPL cycles IX–XV</p>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">58.25</div>
+        <div class="hero-stat-lbl">Prelims 2025 (UR)</div>
+      </div>
+      <div class="hero-stat" style="border-left:1px solid rgba(255,255,255,.15); padding-left:20px;">
+        <div class="hero-stat-val">23.25</div>
+        <div class="hero-stat-lbl">Mains 2025 (UR)</div>
+      </div>
+      <div class="hero-stat" style="border-left:1px solid rgba(255,255,255,.15); padding-left:20px;">
+        <div class="hero-stat-val">58.67</div>
+        <div class="hero-stat-lbl">Final 2025 (UR)</div>
+      </div>
+      <div class="hero-stat" style="border-left:1px solid rgba(255,255,255,.15); padding-left:20px;">
+        <div class="hero-stat-val">65+</div>
+        <div class="hero-stat-lbl">Safe Target</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="container">
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="setTab('general', this)">General / UR</button>
+    <button class="tab" onclick="setTab('obc', this)">OBC</button>
+    <button class="tab" onclick="setTab('sc', this)">SC</button>
+    <button class="tab" onclick="setTab('st', this)">ST</button>
+  </div>
+
+  <!-- Metrics -->
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-accent" style="background: linear-gradient(90deg,#2563EB,#60A5FA);"></div>
+      <div class="metric-label">Prelims cut-off 2025</div>
+      <div class="metric-value" id="m1">58.25</div>
+      <div class="metric-sub up" id="m1d">▲ +22.25 vs 2024</div>
+    </div>
+    <div class="metric">
+      <div class="metric-accent" style="background: linear-gradient(90deg,#0D9488,#34D399);"></div>
+      <div class="metric-label">Mains cut-off 2025</div>
+      <div class="metric-value" id="m2">23.25</div>
+      <div class="metric-sub up" id="m2d">▲ +6.75 vs 2024</div>
+    </div>
+    <div class="metric">
+      <div class="metric-accent" style="background: linear-gradient(90deg,#F5A623,#F97316);"></div>
+      <div class="metric-label">Final selection 2025</div>
+      <div class="metric-value" id="m3">58.67</div>
+      <div class="metric-sub up" id="m3d">▲ +11.67 vs 2024</div>
+    </div>
+    <div class="metric">
+      <div class="metric-accent" style="background: linear-gradient(90deg,#7C3AED,#A78BFA);"></div>
+      <div class="metric-label">Mains PK section (/60)</div>
+      <div class="metric-value" id="m4">17.50</div>
+      <div class="metric-sub up" id="m4d">▲ +7.25 vs 2024</div>
+    </div>
+  </div>
+
+  <!-- Insights -->
+  <div class="insight-bar">
+    <div class="insight" style="border-left-color:#2563EB;">
+      <strong>📈 Prelims surged in 2025</strong>
+      <p>58.25 (UR) — highest in 6 years, after 2024's historic low of 36.00</p>
+    </div>
+    <div class="insight" style="border-left-color:#DC2626;">
+      <strong>🔺 Mains PK rising fast</strong>
+      <p>17.50 (UR) vs 10.25 in 2024 — IT knowledge depth now critical</p>
+    </div>
+    <div class="insight" style="border-left-color:#0D9488;">
+      <strong>✅ Final cut-off recovered</strong>
+      <p>Back above 58 after dipping to 47.00 in 2024 — safe target is 65+</p>
+    </div>
+    <div class="insight" style="border-left-color:#F5A623;">
+      <strong>🎯 Your safe score targets</strong>
+      <p>Aim 65+ Prelims · 30+ Mains PK for UR/OBC to stay above cut-offs</p>
+    </div>
+  </div>
+
+  <!-- CTA Strip -->
+  <div class="cta-strip">
+    <div class="cta-text">
+      <h3>🚀 Crack IBPS SO IT with Ways to Officer!</h3>
+      <p>Free lectures, notes, PYQs, mock tests & daily current affairs — all in one place</p>
+    </div>
+    <div class="cta-btns">
+      <a class="cta-btn cta-btn-yt" href="https://www.youtube.com/@waystoofficer" target="_blank">
+        ▶ &nbsp;Subscribe on YouTube
+      </a>
+      <a class="cta-btn cta-btn-tg" href="https://t.me/way2officersguide" target="_blank">
+        ✈ &nbsp;Join Telegram Channel
+      </a>
+    </div>
+  </div>
+
+  <!-- Line charts -->
+  <div class="section-label">Cut-off trend charts</div>
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-title">Prelims overall cut-off trend</div>
+      <div class="chart-sub">Out of 125 marks · IT Officer Scale-I · 2019–2025</div>
+      <div class="legend">
+        <span><span class="legend-dot" style="background:#2563EB"></span>UR / General</span>
+        <span><span class="legend-dot" style="background:#0D9488"></span>OBC</span>
+        <span><span class="legend-dot" style="background:#DC2626"></span>SC</span>
+        <span><span class="legend-dot" style="background:#D97706"></span>ST</span>
+      </div>
+      <div style="position:relative; width:100%; height:240px;">
+        <canvas id="prelims-chart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Mains cut-off trend (Professional Knowledge)</div>
+      <div class="chart-sub">Out of 60 marks · IT Officer Scale-I · 2019–2025</div>
+      <div class="legend">
+        <span><span class="legend-dot" style="background:#2563EB"></span>UR / General</span>
+        <span><span class="legend-dot" style="background:#0D9488"></span>OBC</span>
+        <span><span class="legend-dot" style="background:#DC2626"></span>SC</span>
+        <span><span class="legend-dot" style="background:#D97706"></span>ST</span>
+      </div>
+      <div style="position:relative; width:100%; height:240px;">
+        <canvas id="mains-chart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Final bar chart -->
+  <div class="chart-card full" style="margin-bottom:1.5rem;">
+    <div class="chart-title">Final selection cut-off trend (Mains + Interview combined, out of 100)</div>
+    <div class="chart-sub">Minimum scores for provisional allotment · IT Officer Scale-I · All categories · 2019–2025</div>
+    <div class="legend">
+      <span><span class="legend-dot" style="background:#2563EB"></span>UR</span>
+      <span><span class="legend-dot" style="background:#0D9488"></span>OBC</span>
+      <span><span class="legend-dot" style="background:#DC2626"></span>SC</span>
+      <span><span class="legend-dot" style="background:#D97706"></span>ST</span>
+    </div>
+    <div style="position:relative; width:100%; height:230px;">
+      <canvas id="final-chart"></canvas>
+    </div>
+  </div>
+
+  <!-- Section-wise table -->
+  <div class="section-label">Section-wise prelims cut-off · General / EWS</div>
+  <div class="table-card">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Year (Cycle)</th>
+            <th>English (/25)</th>
+            <th>Reasoning (/50)</th>
+            <th>GK / QA (/50)</th>
+            <th>Overall UR (/125)</th>
+            <th>Trend</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="year-cell">2019 (SPL-IX)</td><td class="num">8.75</td><td class="num">7.00</td><td class="num">9.25</td><td class="num">44.50</td><td><span class="badge badge-gray">Baseline</span></td></tr>
+          <tr><td class="year-cell">2020 (SPL-X)</td><td class="num">8.25</td><td class="num">6.25</td><td class="num">8.50</td><td class="num">41.25</td><td><span class="badge badge-green">▼ Eased</span></td></tr>
+          <tr><td class="year-cell">2021 (SPL-XI)</td><td class="num">9.50</td><td class="num">7.50</td><td class="num">9.50</td><td class="num">47.50</td><td><span class="badge badge-red">▲ Rose</span></td></tr>
+          <tr><td class="year-cell">2022 (SPL-XII)</td><td class="num">9.25</td><td class="num">6.75</td><td class="num">9.25</td><td class="num">46.00</td><td><span class="badge badge-teal">▼ Slight dip</span></td></tr>
+          <tr><td class="year-cell">2023 (SPL-XIII)</td><td class="num">9.50</td><td class="num">7.25</td><td class="num">9.50</td><td class="num">48.00</td><td><span class="badge badge-red">▲ Rose</span></td></tr>
+          <tr><td class="year-cell">2024 (SPL-XIV)</td><td class="num">7.25</td><td class="num">3.50</td><td class="num">5.00</td><td class="num" style="color:#16A34A;font-weight:700;">36.00</td><td><span class="badge badge-green">▼ Big drop</span></td></tr>
+          <tr style="background:#FFF8F0;"><td class="year-cell" style="color:#B45309;">2025 (SPL-XV)</td><td class="num">10.25</td><td class="num">6.50</td><td class="num">9.50</td><td class="num" style="color:#DC2626;font-weight:700;">58.25 🔺</td><td><span class="badge badge-red">▲ Big jump</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Category-wise summary -->
+  <div class="section-label">Category-wise cut-off summary — all stages · 2021–2025</div>
+  <div class="table-card">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Stage</th>
+            <th>UR</th>
+            <th>OBC</th>
+            <th>EWS</th>
+            <th>SC</th>
+            <th>ST</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="year-cell" rowspan="3" style="vertical-align:top;padding-top:14px;border-right:2px solid #EEF2FF;">2025</td><td><span class="badge badge-blue">Prelims</span></td><td class="num">58.25</td><td class="num">58.25</td><td class="num">55.00</td><td class="num">58.25</td><td class="num">48.63</td></tr>
+          <tr><td><span class="badge badge-amber">Mains</span></td><td class="num">23.25</td><td class="num">21.50</td><td class="num">21.00</td><td class="num">14.75</td><td class="num">15.25</td></tr>
+          <tr><td><span class="badge badge-green">Final</span></td><td class="num" style="font-weight:700;color:#1D4ED8;">58.67</td><td class="num">50.27</td><td class="num">52.67</td><td class="num">42.33</td><td class="num">41.67</td></tr>
+
+          <tr><td class="year-cell" rowspan="3" style="vertical-align:top;padding-top:14px;border-right:2px solid #EEF2FF;">2024</td><td><span class="badge badge-blue">Prelims</span></td><td class="num">36.00</td><td class="num">36.00</td><td class="num">16.75</td><td class="num">36.00</td><td class="num">32.63</td></tr>
+          <tr><td><span class="badge badge-amber">Mains</span></td><td class="num">16.50</td><td class="num">15.50</td><td class="num">14.75</td><td class="num">13.00</td><td class="num">10.25</td></tr>
+          <tr><td><span class="badge badge-green">Final</span></td><td class="num">47.00</td><td class="num">40.40</td><td class="num">42.00</td><td class="num">37.33</td><td class="num">33.80</td></tr>
+
+          <tr><td class="year-cell" rowspan="3" style="vertical-align:top;padding-top:14px;border-right:2px solid #EEF2FF;">2023</td><td><span class="badge badge-blue">Prelims</span></td><td class="num">48.00</td><td class="num">48.00</td><td class="num">47.00</td><td class="num">42.00</td><td class="num">37.00</td></tr>
+          <tr><td><span class="badge badge-amber">Mains</span></td><td class="num">22.50</td><td class="num">19.75</td><td class="num">20.50</td><td class="num">15.25</td><td class="num">12.75</td></tr>
+          <tr><td><span class="badge badge-green">Final</span></td><td class="num">52.67</td><td class="num">46.40</td><td class="num">49.80</td><td class="num">40.00</td><td class="num">38.47</td></tr>
+
+          <tr><td class="year-cell" rowspan="3" style="vertical-align:top;padding-top:14px;border-right:2px solid #EEF2FF;">2022</td><td><span class="badge badge-blue">Prelims</span></td><td class="num">46.00</td><td class="num">45.50</td><td class="num">44.00</td><td class="num">41.00</td><td class="num">36.50</td></tr>
+          <tr><td><span class="badge badge-amber">Mains</span></td><td class="num">20.75</td><td class="num">18.50</td><td class="num">19.50</td><td class="num">14.50</td><td class="num">11.75</td></tr>
+          <tr><td><span class="badge badge-green">Final</span></td><td class="num">51.40</td><td class="num">45.73</td><td class="num">48.53</td><td class="num">39.27</td><td class="num">36.07</td></tr>
+
+          <tr><td class="year-cell" rowspan="3" style="vertical-align:top;padding-top:14px;border-right:2px solid #EEF2FF;">2021</td><td><span class="badge badge-blue">Prelims</span></td><td class="num">47.50</td><td class="num">45.00</td><td class="num">46.00</td><td class="num">40.00</td><td class="num">34.50</td></tr>
+          <tr><td><span class="badge badge-amber">Mains</span></td><td class="num">19.50</td><td class="num">17.25</td><td class="num">18.00</td><td class="num">13.50</td><td class="num">11.00</td></tr>
+          <tr><td><span class="badge badge-green">Final</span></td><td class="num">49.27</td><td class="num">44.13</td><td class="num">47.07</td><td class="num">38.13</td><td class="num">35.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">
+      <img src="logo.png" class="logo-img">
+
+      <div>
+        <div class="footer-brand">Ways to Officer — Dpksanu</div>
+        <div class="footer-tagline">Your trusted guide to IBPS SO IT, SBI SO IT & RRB SO IT</div>
+      </div>
+    </div>
+    <div class="footer-right">
+      Data: Official IBPS score cards · <a href="https://ibps.in" target="_blank">ibps.in</a><br>
+      Prelims scores are qualifying only · Final = Mains + Interview out of 100<br>
+      Updated: March 2026 &nbsp;|&nbsp;
+      <a href="https://t.me/way2officersguide" target="_blank">t.me/way2officersguide</a>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+const years = ['2019','2020','2021','2022','2023','2024','2025'];
+
+const allData = {
+  prelims: {
+    general: [44.50, 41.25, 47.50, 46.00, 48.00, 36.00, 58.25],
+    obc:     [42.00, 38.50, 45.00, 43.50, 46.00, 36.00, 58.25],
+    sc:      [38.00, 34.00, 40.00, 39.00, 42.00, 36.00, 58.25],
+    st:      [32.00, 28.50, 34.50, 35.00, 37.00, 32.63, 48.63],
+  },
+  mains: {
+    general: [17.00, 15.50, 19.50, 20.75, 22.50, 16.50, 23.25],
+    obc:     [15.25, 13.50, 17.25, 18.50, 19.75, 15.50, 21.50],
+    sc:      [11.50, 10.25, 13.50, 14.50, 15.25, 13.00, 14.75],
+    st:      [9.50,  8.50,  11.00, 11.75, 12.75, 10.25, 15.25],
+  },
+  final: {
+    general: [45.00, 43.27, 49.27, 51.40, 52.67, 47.00, 58.67],
+    obc:     [40.13, 38.40, 44.13, 45.73, 46.40, 40.40, 50.27],
+    sc:      [35.07, 33.60, 38.13, 39.27, 40.00, 37.33, 42.33],
+    st:      [31.00, 29.80, 35.00, 36.07, 38.47, 33.80, 41.67],
+  }
+};
+
+const COLORS = { general:'#2563EB', obc:'#0D9488', sc:'#DC2626', st:'#D97706' };
+
+const metricData = {
+  general: { p:'58.25', pd:'▲ +22.25 vs 2024', pup:true, m:'23.25', md:'▲ +6.75 vs 2024',  mup:true, f:'58.67', fd:'▲ +11.67 vs 2024', fup:true, s:'17.50', sd:'▲ +7.25 vs 2024',  sup:true },
+  obc:     { p:'58.25', pd:'▲ +22.25 vs 2024', pup:true, m:'21.50', md:'▲ +6.00 vs 2024',  mup:true, f:'50.27', fd:'▲ +9.87 vs 2024',  fup:true, s:'17.50', sd:'▲ +7.25 vs 2024',  sup:true },
+  sc:      { p:'58.25', pd:'▲ +22.25 vs 2024', pup:true, m:'14.75', md:'▲ +1.75 vs 2024',  mup:true, f:'42.33', fd:'▲ +5.00 vs 2024',  fup:true, s:'13.25', sd:'▲ +6.50 vs 2024',  sup:true },
+  st:      { p:'48.63', pd:'▲ +16.00 vs 2024', pup:true, m:'15.25', md:'▲ +5.00 vs 2024',  mup:true, f:'41.67', fd:'▲ +7.87 vs 2024',  fup:true, s:'13.25', sd:'▲ +6.50 vs 2024',  sup:true },
+};
+
+const gridColor = 'rgba(11,23,48,0.05)';
+const tickFont  = { family: "'Sora', sans-serif", size: 11 };
+
+Chart.defaults.font.family = "'Sora', sans-serif";
+
+function makeLineDatasets(type) {
+  return ['general','obc','sc','st'].map(k => ({
+    label: k, data: allData[type][k],
+    borderColor: COLORS[k], backgroundColor: COLORS[k] + '15',
+    borderWidth: 2.5, pointRadius: 5, pointHoverRadius: 7,
+    pointBackgroundColor: COLORS[k], pointBorderColor: '#fff', pointBorderWidth: 2,
+    tension: 0.35, fill: false
+  }));
+}
+
+const baseOpts = (max) => ({
+  responsive: true, maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      backgroundColor: '#0B1730', titleFont: { family:"'Sora',sans-serif", size:12 },
+      bodyFont: { family:"'JetBrains Mono',monospace", size:12 },
+      padding: 12, cornerRadius: 10, borderColor: 'rgba(245,166,35,.3)', borderWidth: 1,
+      callbacks: { label: ctx => '  ' + ctx.dataset.label.toUpperCase() + ': ' + ctx.parsed.y.toFixed(2) }
+    }
+  },
+  scales: {
+    x: { grid:{ color:gridColor }, ticks:{ font:tickFont, color:'#64748B' }, border:{ color:'rgba(11,23,48,0.1)' } },
+    y: { min:0, max, grid:{ color:gridColor }, ticks:{ font:tickFont, color:'#64748B' }, border:{ color:'rgba(11,23,48,0.1)' } }
+  }
+});
+
+const prelimsChart = new Chart(document.getElementById('prelims-chart'), {
+  type:'line', data:{ labels:years, datasets:makeLineDatasets('prelims') }, options:baseOpts(80)
+});
+const mainsChart = new Chart(document.getElementById('mains-chart'), {
+  type:'line', data:{ labels:years, datasets:makeLineDatasets('mains') }, options:baseOpts(30)
+});
+new Chart(document.getElementById('final-chart'), {
+  type:'bar',
+  data:{
+    labels:years,
+    datasets:[
+      { label:'UR',  data:allData.final.general, backgroundColor:'#2563EB', borderRadius:5, barPercentage:0.55 },
+      { label:'OBC', data:allData.final.obc,     backgroundColor:'#0D9488', borderRadius:5, barPercentage:0.55 },
+      { label:'SC',  data:allData.final.sc,       backgroundColor:'#DC2626', borderRadius:5, barPercentage:0.55 },
+      { label:'ST',  data:allData.final.st,       backgroundColor:'#D97706', borderRadius:5, barPercentage:0.55 },
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{ display:false },
+      tooltip:{
+        backgroundColor:'#0B1730', padding:12, cornerRadius:10,
+        borderColor:'rgba(245,166,35,.3)', borderWidth:1,
+        titleFont:{family:"'Sora',sans-serif",size:12},
+        bodyFont:{family:"'JetBrains Mono',monospace",size:12},
+        callbacks:{ label: ctx => '  '+ctx.dataset.label+': '+ctx.parsed.y.toFixed(2) }
+      }
+    },
+    scales:{
+      x:{ grid:{color:gridColor}, ticks:{font:tickFont, color:'#64748B'}, border:{color:'rgba(11,23,48,0.1)'} },
+      y:{ min:0, max:80, grid:{color:gridColor}, ticks:{font:tickFont, color:'#64748B'}, border:{color:'rgba(11,23,48,0.1)'} }
+    }
+  }
+});
+
+function setTab(cat, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const d = metricData[cat];
+  document.getElementById('m1').textContent = d.p;
+  document.getElementById('m1d').textContent = d.pd; document.getElementById('m1d').className = 'metric-sub '+(d.pup?'up':'down');
+  document.getElementById('m2').textContent = d.m;
+  document.getElementById('m2d').textContent = d.md; document.getElementById('m2d').className = 'metric-sub '+(d.mup?'up':'down');
+  document.getElementById('m3').textContent = d.f;
+  document.getElementById('m3d').textContent = d.fd; document.getElementById('m3d').className = 'metric-sub '+(d.fup?'up':'down');
+  document.getElementById('m4').textContent = d.s;
+  document.getElementById('m4d').textContent = d.sd; document.getElementById('m4d').className = 'metric-sub '+(d.sup?'up':'down');
+  const keys = ['general','obc','sc','st'];
+  [prelimsChart, mainsChart].forEach(ch => {
+    ch.data.datasets.forEach((ds, i) => {
+      const active = keys[i] === cat;
+      ds.borderWidth = active ? 3.5 : 1.5;
+      ds.pointRadius = active ? 6 : 3;
+      ds.borderDash   = active ? [] : [5, 4];
+      ds.borderColor  = active ? COLORS[keys[i]] : COLORS[keys[i]] + '50';
+      ds.pointBackgroundColor = active ? COLORS[keys[i]] : COLORS[keys[i]] + '50';
+    });
+    ch.update();
+  });
+}
+</script>
+</body>
+</html>
